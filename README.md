@@ -174,6 +174,12 @@ v2.0.0 `2019-03-24`
 
 Node.js重构，以前的在vuejs分支
 
+## 相关 commit
+
+* [设置默认画质为最高画质](https://github.com/chal34/BilibiliVideoDownload/commit/392cb4bd6940787208ad17e8218b151b8d60fdfe)
+* [480p 画质](https://github.com/cmss-bupt/BilibiliVideoDownload/commit/c8653a356225b92c86b3d2de2c77399955e45753)
+* [feat: Support download audio only. Issues 58](https://github.com/AHGGG/BilibiliVideoDownload/commit/3624e86afba56c51f3e06e46b3d5988b2043c76a)
+
 ## 感谢
 
 * 特别感谢JetBrains为开源项目提供的免费许可证，申请地址：[https://www.jetbrains.com/zh-cn/community/opensource/#support](https://www.jetbrains.com/zh-cn/community/opensource/#support)
