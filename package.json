@@ -1,10 +1,10 @@
 {
   "name": "bilibilivideodownload",
-  "version": "3.3.3",
+  "version": "3.4.0",
   "private": true,
   "author": "wangyu <wangyu@wangyu.link>",
   "description": "欢迎使用BilibiliVideoDownload",
-  "homepage": "https://github.com/blogwy/BilibiliVideoDownload",
+  "homepage": "https://github.com/zqhong/BilibiliVideoDownload",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
