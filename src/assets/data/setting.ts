@@ -37,6 +37,12 @@ const formConfig = [
     tips: '开启后每个任务会下载到一个单独的文件夹里面'
   },
   {
+    label: '下载音频',
+    type: 'switch',
+    name: 'isDownloadAudio',
+    tips: '开启后会下载视频的音频'
+  },
+  {
     label: '下载字幕',
     type: 'switch',
     name: 'isSubtitle',
@@ -62,6 +68,7 @@ const settingData = {
   isDelete: true,
   isSubtitle: true,
   isDanmaku: true,
+  isDownloadAudio: true,
   isFolder: true,
   isCover: true,
   downloadingMaxSize: 5
@@ -101,6 +108,11 @@ const settingRules = {
     }
   ],
   isDanmaku: [
+    {
+      required: false
+    }
+  ],
+  isDownloadAudio: [
     {
       required: false
     }

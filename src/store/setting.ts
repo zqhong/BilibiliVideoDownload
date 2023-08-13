@@ -12,6 +12,7 @@ export const settingStore = defineStore('setting', {
       bfeId: '',
       isSubtitle: true,
       isDanmaku: true,
+      isDownloadAudio: true,
       isFolder: true,
       isCover: true,
       downloadingMaxSize: 5
@@ -27,6 +28,7 @@ export const settingStore = defineStore('setting', {
       bfeId: state.bfeId,
       isSubtitle: state.isSubtitle,
       isDanmaku: state.isDanmaku,
+      isDownloadAudio: state.isDownloadAudio,
       isFolder: state.isFolder,
       isCover: state.isCover,
       downloadingMaxSize: state.downloadingMaxSize
@@ -61,6 +63,10 @@ export const settingStore = defineStore('setting', {
       this.isDanmaku = data
       window.electron.setStore('setting.isDanmaku', data)
     },
+    setIsDownloadAudio (data: boolean) {
+      this.isDownloadAudio = data
+      window.electron.setStore('setting.setIsDownloadAudio', data)
+    },
     setIsFolder (data: boolean) {
       this.isFolder = data
       window.electron.setStore('setting.isFolder', data)
@@ -82,6 +88,7 @@ export const settingStore = defineStore('setting', {
         }
       }
       window.electron.setStore('setting', allSetting)
+      console.info(setting)
     }
   }
 })
