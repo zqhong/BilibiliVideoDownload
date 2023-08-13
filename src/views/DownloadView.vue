@@ -29,7 +29,7 @@
       </div>
       <div class="right">
         <div class="image">
-          <a-image :src="rightTask.cover" :alt="rightTask.title" />
+          <a-image :src="rightTask.cover" :alt="rightTask.title"  :style="{ width: '250px' }"  />
         </div>
         <div class="pl16 mt8 text-active" @click="openBrowser(rightTask.url)">{{ rightTask.title }}</div>
         <div class="fr ac pl16 mt8 up-list">
