@@ -1,20 +1,25 @@
-import { IpcMainEvent } from 'electron'
+import {IpcMainEvent} from 'electron'
 import UA from '../assets/data/ua'
-import { mergeVideoAudio } from './media'
-import { sleep } from '../utils'
-import { downloadSubtitle } from './subtitle'
-import { TaskData, SettingData } from '../type'
+import {convertToAudio, mergeVideoAudio} from './media'
+import {sleep} from '../utils'
+import {downloadSubtitle} from './subtitle'
+import {TaskData, SettingData} from '../type'
 
 const stream = require('stream')
-const { promisify } = require('util')
+const {promisify} = require('util')
 const fs = require('fs-extra')
 const got = require('got')
 const log = require('electron-log')
 const pipeline = promisify(stream.pipeline)
 
-function handleDeleteFile (setting: SettingData, videoInfo: TaskData) {
+function handleDeleteFile(setting: SettingData, videoInfo: TaskData) {
   // 删除原视频
   if (setting.isDelete) {
+    // videoInfo.filePathList 数组说明
+    // 0：合成的视频路径
+    // 1：封面路径
+    // 2：视频路径
+    // 3：音频路径
     const filePathList = videoInfo.filePathList
     fs.removeSync(filePathList[2])
     fs.removeSync(filePathList[3])
@@ -158,6 +163,14 @@ export default async (videoInfo: TaskData, event: IpcMainEvent, setting: Setting
         })
         // 删除原视频
         handleDeleteFile(setting, videoInfo)
+
+        // 转换音频
+        if (setting.isDownloadAudio) {
+          let audioFilePath = videoInfo.filePathList[0]
+          audioFilePath = audioFilePath.replace('.mp4', '')
+          audioFilePath = audioFilePath.concat('.mp3')
+          convertToAudio(videoInfo.filePathList[0], audioFilePath)
+        }
       })
       .catch((error: any) => {
         log.error(`音视频合成失败：${videoInfo.title} ${error.message}`)
